@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101827">
+<title>GLOW-UP</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#101827;color:#fff;font-family:Arial,sans-serif;padding:20px}
+h1{color:#70f0b0;margin-bottom:5px}
+.sub{color:#aab6c8}
+.card{background:#1c293b;border-radius:16px;padding:17px;margin:15px 0}
+h2{font-size:18px;margin-top:0}
+.item{display:flex;align-items:center;gap:10px;padding:12px 0;border-bottom:1px solid #344256}
+.item:last-child{border:0}
+input[type=checkbox]{width:21px;height:21px;accent-color:#70f0b0}
+button{background:#70f0b0;border:0;padding:12px 16px;border-radius:10px;font-weight:bold}
+.small{color:#aab6c8;font-size:13px}
+</style>
+</head>
+<body>
+<h1>✨ GLOW-UP</h1>
+<p class="sub">Mulai dari kebiasaan kecil setiap hari!</p>
+<div class="card">
+<h2>📅 Target harian</h2>
+<p>Progres kegiatanmu: <b id="progress">0%</b></p>
+<div style="background:#344256;border-radius:8px;height:10px">
+<div id="bar" style="background:#70f0b0;width:0%;height:10px;border-radius:8px"></div>
+</div>
+</div>
+<div class="card">
+<h2>💧 Minum air</h2>
+<div class="item"><input type="checkbox" class="task"> Setelah bangun tidur</div>
+<div class="item"><input type="checkbox" class="task"> Pagi hari</div>
+<div class="item"><input type="checkbox" class="task"> Siang hari</div>
+<div class="item"><input type="checkbox" class="task"> Sore hari</div>
+<div class="item"><input type="checkbox" class="task"> Malam saat haus</div>
+<p class="small">Minum sesuai rasa haus dan kebutuhan tubuh.</p>
+</div>
+<div class="card">
+<h2>🍽️ Jadwal makan</h2>
+<div class="item"><input type="checkbox" class="task"> Sarapan</div>
+<div class="item"><input type="checkbox" class="task"> Makan siang</div>
+<div class="item"><input type="checkbox" class="task"> Makan malam</div>
+<p class="small">Makan teratur dan cukup. Sesuaikan dengan rasa lapar.</p>
+</div>
+<div class="card">
+<h2>💪 Olahraga di rumah</h2>
+<div class="item"><input type="checkbox" class="task"> Pemanasan ringan</div>
+<div class="item"><input type="checkbox" class="task"> Jalan di tempat</div>
+<div class="item"><input type="checkbox" class="task"> Peregangan</div>
+<div class="item"><input type="checkbox" class="task"> Pendinginan</div>
+<p class="small">Mulai santai, istirahat jika lelah, dan jangan memaksakan diri.</p>
+</div>
+<div class="card">
+<h2>🌙 Perawatan diri</h2>
+<div class="item"><input type="checkbox" class="task"> Mandi dan jaga kebersihan</div>
+<div class="item"><input type="checkbox" class="task"> Merawat gigi</div>
+<div class="item"><input type="checkbox" class="task"> Tidur cukup</div>
+</div>
+<button onclick="resetTasks()">Reset checklist hari ini</button>
+<p class="small">GLOW-UP • Konsisten, sehat, dan percaya diri ✨</p>
+<script>
+const tasks=[...document.querySelectorAll('.task')];
+function update(){
+let done=tasks.filter(t=>t.checked).length;
+let percent=Math.round(done/tasks.length*100);
+document.getElementById('progress').textContent=percent+'%';
+document.getElementById('bar').style.width=percent+'%';
+}
+tasks.forEach(t=>t.addEventListener('change',update));
+function resetTasks(){
+tasks.forEach(t=>t.checked=false);
+update();
+}
+update();
+</script>
+</body>
+</html>
